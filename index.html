@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TAMAYA GOLD — Investasi Emas untuk Masa Depan yang Berharga</title>
+<meta name="description" content="TAMAYA GOLD — Miliki emas berkualitas 999.9 dengan harga transparan, keamanan terjamin, dan pengalaman pembelian premium." />
+<meta name="theme-color" content="#07060a" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body data-page="beranda">
+
+<div class="toast-stack"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-search-toggle aria-label="Cari produk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" data-cart-toggle aria-label="Keranjang belanja">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 2H2"/></svg>
+        <span class="cart-badge" data-cart-count style="display:none">0</span>
+      </button>
+      <div class="account-menu">
+        <button class="icon-btn" data-account-toggle aria-label="Akun saya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+        </button>
+        <div class="account-dropdown glass-strong">
+          <p>Masuk untuk melacak pesanan, menyimpan produk favorit, dan checkout lebih cepat.</p>
+          <button class="btn btn-gold btn-sm btn-block" data-magnetic>Masuk</button>
+          <button class="btn btn-ghost btn-sm btn-block">Daftar Akun</button>
+        </div>
+      </div>
+      <button class="nav-toggle" data-nav-toggle aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<div class="mobile-nav">
+  <div class="mobile-nav-backdrop" data-nav-close></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-head">
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+      <button class="icon-btn" data-nav-close aria-label="Tutup menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <button class="btn btn-gold btn-block">Masuk</button>
+      <button class="btn btn-ghost btn-block">Daftar Akun</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div class="search-overlay">
+  <div class="search-overlay-backdrop" data-search-close></div>
+  <div class="search-box glass-strong">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Cari emas batangan, koin, perhiasan..." autocomplete="off" />
+      <button class="icon-btn" data-search-close aria-label="Tutup pencarian">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-results" data-search-results></div>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-drawer">
+  <div class="cart-backdrop" data-cart-close></div>
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h3>Keranjang Anda</h3>
+      <button class="icon-btn" data-cart-close aria-label="Tutup keranjang">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-foot" data-cart-foot>
+      <div class="wa-order-summary">
+        <div class="wa-summary-row"><span>Produk</span><span data-cart-item-count>0 item</span></div>
+        <div class="wa-summary-row"><span>Total Qty</span><span data-cart-qty-count>0</span></div>
+      </div>
+      <div class="cart-subtotal"><span>Total</span><b data-cart-subtotal>Rp 0</b></div>
+      <button class="btn btn-gold btn-block btn-whatsapp" data-checkout>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        Pesan via WhatsApp
+      </button>
+      <p class="wa-note">Pesanan akan dilanjutkan melalui WhatsApp</p>
+      <p class="wa-note">Harga LM dapat berubah sewaktu-waktu dan akan dikonfirmasi tim kami.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ QUICK VIEW MODAL ============ -->
+<div class="quick-view-modal">
+  <div class="modal-backdrop" data-qv-close></div>
+  <div class="quick-view-box glass-strong">
+    <button class="icon-btn qv-close" data-qv-close aria-label="Tutup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="qv-visual" data-qv-visual></div>
+    <div>
+      <div class="qv-category" data-qv-category>Emas Batangan</div>
+      <h3 class="qv-name" data-qv-name>Nama Produk</h3>
+      <div class="qv-specs">
+        <span data-qv-weight>1 Gram</span>
+        <span data-qv-purity>999.9 Fine Gold</span>
+      </div>
+      <div class="qv-price" data-qv-price>Rp 0</div>
+      <div class="product-stock" data-qv-stock>Tersedia</div>
+      <div class="product-note">Harga dapat berubah mengikuti kondisi pasar.</div>
+      <div class="product-actions" style="margin-top:20px;">
+        <button class="btn btn-gold btn-block" data-qv-add>Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Investasi Emas Modern</span>
+        <h1 class="hero-title font-display">Investasi Emas, Untuk <span class="text-gold">Masa Depan</span> yang Berharga.</h1>
+        <p class="hero-subtitle">Miliki emas berkualitas dengan harga transparan, keamanan terjamin, dan pengalaman pembelian yang premium.</p>
+        <div class="hero-actions">
+          <a href="shop.html" class="btn btn-gold" data-magnetic>
+            Belanja Sekarang
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="gold-price.html" class="btn btn-ghost" data-magnetic>Lihat Harga Emas</a>
+        </div>
+        <a class="hero-wa-link" data-wa-general href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+          Tanya Harga via WhatsApp
+        </a>
+        <div class="hero-stats">
+          <div class="hero-stat"><b data-count-to="999.9" data-decimals="1">0</b><span>Kemurnian Emas</span></div>
+          <div class="hero-stat"><b data-count-to="25000" data-decimals="0" data-suffix="+">0</b><span>Pelanggan Terlayani</span></div>
+          <div class="hero-stat"><b data-count-to="100" data-decimals="0" data-suffix="%">0</b><span>Keaslian Terjamin</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-visual-fallback" style="display:none;"></div>
+      </div>
+    </div>
+    <div class="hero-scroll-cue"><span>Scroll</span><span class="scroll-line"></span></div>
+  </section>
+
+  <!-- ============ HARGA LOGAM MULIA HARI INI ============ -->
+  <section id="harga-emas">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Pasar Logam Mulia</span>
+        <h2 class="section-title font-display">Harga Logam Mulia <span class="text-gold">Hari Ini</span></h2>
+        <p class="section-subtitle">Harga LM TAMAYA GOLD mengacu pada harga referensi pasar, diperbarui setiap saat.</p>
+      </div>
+
+      <div class="glass-strong price-card" data-reveal style="max-width:900px;margin:0 auto;" data-price-widget>
+        <div class="price-card-top">
+          <div>
+            <div class="price-label">Harga Acuan LM · Per Gram</div>
+            <div class="price-value" data-price-value>Rp —</div>
+            <div class="price-change" data-price-change>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              <span data-price-change-pct>+0,82%</span>&nbsp;Naik Hari Ini
+            </div>
+            <div class="price-status-row">
+              <span class="price-status" data-price-status><span class="dot"></span><span data-price-status-text>FALLBACK</span></span>
+              <button class="price-refresh-btn" data-price-refresh type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v6h-6"/></svg>
+                <span data-price-refresh-label>Perbarui Harga</span>
+              </button>
+            </div>
+          </div>
+          <div class="period-tabs" data-price-periods>
+            <button class="active" data-period="1H">1H</button>
+            <button data-period="1M">1M</button>
+            <button data-period="3M">3M</button>
+            <button data-period="6M">6M</button>
+            <button data-period="1T">1T</button>
+            <button data-period="5T">5T</button>
+          </div>
+        </div>
+        <div class="chart-wrap" style="height:220px;">
+          <canvas data-price-chart></canvas>
+          <div class="chart-tooltip" data-chart-tooltip style="position:absolute;top:0;opacity:0;pointer-events:none;transform:translate(-50%,-110%);"></div>
+        </div>
+        <div class="chart-history-note">Data historis akan tersedia setelah koneksi API harga resmi — grafik di atas adalah data demo.</div>
+        <div class="price-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>Update: <span data-price-updated>—</span> &middot; Sumber: <span data-price-source>Fallback internal</span></span>
+        </div>
+        <div class="price-fallback-note" data-price-fallback-note style="display:none;">
+          Data harga resmi sementara tidak dapat diperbarui. Menampilkan harga fallback terakhir.
+        </div>
+        <div class="price-market-note">
+          Harga LM dapat berubah sewaktu-waktu mengikuti harga acuan. Harga final akan dikonfirmasi oleh tim TAMAYA GOLD melalui WhatsApp sebelum pembayaran.
+        </div>
+        <div class="price-sources">
+          <div class="label">Sumber Harga Resmi</div>
+          <div class="price-sources-list">
+            <a href="https://hartadinataabadi.co.id/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+              Hartadinata Abadi
+            </a>
+            <a href="https://hrtagold.id/id/gold-price" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+              HRTA Gold
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUK ============ -->
+  <section class="bg-obsidian-2" id="produk">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Koleksi Kami</span>
+        <h2 class="section-title font-display">Temukan <span class="text-gold">Emas Pilihan</span> Anda</h2>
+        <p class="section-subtitle">Dari batangan investasi hingga perhiasan eksklusif, setiap produk TAMAYA GOLD bersertifikat 999.9 fine gold.</p>
+      </div>
+
+      <div class="product-grid" data-product-preview></div>
+
+      <div class="text-center" style="margin-top:48px;" data-reveal>
+        <a href="shop.html" class="btn btn-ghost" data-magnetic>Lihat Semua Produk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KEUNGGULAN ============ -->
+  <section id="keunggulan">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Kenapa Kami</span>
+        <h2 class="section-title font-display">Mengapa Memilih <span class="text-gold">TAMAYA GOLD</span>?</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card glass" data-reveal>
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>999.9 Fine Gold</h3>
+          <p>Emas dengan kemurnian tinggi, diuji dan disertifikasi pada setiap batch produksi.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="1">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="6"/><path d="m9 13-3 8 6-3 6 3-3-8"/></svg></div>
+          <h3>Keaslian Terjamin</h3>
+          <p>Setiap produk dilengkapi sertifikat keaslian dan dapat diverifikasi kapan saja.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="2">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Harga Transparan</h3>
+          <p>Harga ditampilkan secara jelas mengikuti harga pasar emas internasional, tanpa biaya tersembunyi.</p>
+        </div>
+        <div class="feature-card glass" data-reveal>
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3"/><path d="M3 8h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 12h6"/></svg></div>
+          <h3>Kemasan Premium</h3>
+          <p>Produk dikemas secara aman dan elegan, siap menjadi hadiah maupun koleksi pribadi.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="1">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="7" width="15" height="10" rx="2"/><path d="M16 10h3l4 4v3h-7z"/><circle cx="6" cy="19" r="1.5"/><circle cx="18.5" cy="19" r="1.5"/></svg></div>
+          <h3>Pengiriman Aman</h3>
+          <p>Setiap pesanan dikirim dengan asuransi penuh dan pelacakan langsung hingga sampai tujuan.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="2">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h3>Layanan Terpercaya</h3>
+          <p>Tim customer service kami siap membantu setiap pertanyaan seputar produk dan pesanan Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KALKULATOR INVESTASI ============ -->
+  <section class="bg-obsidian-2" id="kalkulator">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Simulasi</span>
+        <h2 class="section-title font-display">Hitung Potensi <span class="text-gold">Investasi Emas</span></h2>
+        <p class="section-subtitle">Masukkan jumlah investasi Anda dan lihat estimasi kepemilikan emas secara instan.</p>
+      </div>
+
+      <div class="calc-grid" data-calculator data-reveal>
+        <div class="glass calc-panel">
+          <div class="field">
+            <label>Jumlah Investasi</label>
+            <div class="input-wrap">
+              <span class="prefix">Rp</span>
+              <input type="text" inputmode="numeric" data-calc-amount placeholder="10.000.000" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Pilihan Cepat Berat Emas</label>
+            <div class="weight-options">
+              <button class="weight-chip" data-calc-weight="1">1 gram</button>
+              <button class="weight-chip" data-calc-weight="5">5 gram</button>
+              <button class="weight-chip" data-calc-weight="10">10 gram</button>
+              <button class="weight-chip" data-calc-weight="25">25 gram</button>
+              <button class="weight-chip" data-calc-weight="50">50 gram</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Proyeksi Jangka Waktu</label>
+            <div class="weight-options">
+              <button class="weight-chip active" data-calc-period="1">1 Tahun</button>
+              <button class="weight-chip" data-calc-period="5">5 Tahun</button>
+              <button class="weight-chip" data-calc-period="10">10 Tahun</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-strong calc-results">
+          <div class="result-row">
+            <span class="label">Jumlah Emas</span>
+            <span class="value" data-calc-result-grams>0,00 gram</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Harga Saat Ini</span>
+            <span class="value" data-calc-result-price>Rp — / gram</span>
+          </div>
+          <div class="result-row highlight">
+            <span class="label">Estimasi Nilai Sekarang</span>
+            <span class="value" data-calc-result-value>Rp 0</span>
+          </div>
+          <div class="result-row highlight">
+            <span class="label">Estimasi Potensi Nilai</span>
+            <span class="value" data-calc-projection>Rp 0</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--ivory-faint);line-height:1.6;">
+            *Estimasi potensi nilai menggunakan asumsi rata-rata kenaikan historis emas dan bukan merupakan jaminan hasil investasi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARA MEMBELI ============ -->
+  <section id="cara-membeli">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Proses Mudah</span>
+        <h2 class="section-title font-display">Semudah <span class="text-gold">1 — 2 — 3</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <div class="step-number">01</div>
+          <h3>Pilih Emas</h3>
+          <p>Pilih produk dan berat emas yang Anda inginkan dari koleksi kami.</p>
+        </div>
+        <div class="step" data-reveal data-reveal-delay="1">
+          <div class="step-number">02</div>
+          <h3>Lakukan Pemesanan</h3>
+          <p>Masukkan data pengiriman dan selesaikan proses pemesanan secara aman.</p>
+        </div>
+        <div class="step" data-reveal data-reveal-delay="2">
+          <div class="step-number">03</div>
+          <h3>Emas Sampai di Tangan</h3>
+          <p>Pesanan dikemas dengan aman dan dikirim langsung ke alamat Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST SECTION ============ -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-grid">
+        <div data-reveal>
+          <span class="eyebrow">Keamanan &amp; Kepercayaan</span>
+          <h2 class="section-title font-display">Emas yang Memberikan <span class="text-gold">Rasa Percaya Diri.</span></h2>
+          <p class="section-subtitle">TAMAYA GOLD membangun setiap transaksi di atas fondasi keamanan, verifikasi, dan transparansi penuh.</p>
+          <div class="trust-list">
+            <div class="trust-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Produk terverifikasi secara berkala</p></div>
+            <div class="trust-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Keaslian dijamin dengan sertifikat resmi</p></div>
+            <div class="trust-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Transaksi aman dengan enkripsi standar industri</p></div>
+            <div class="trust-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Pengemasan profesional dan tidak mencolok</p></div>
+            <div class="trust-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><p>Pengiriman terpercaya dengan asuransi penuh</p></div>
+          </div>
+        </div>
+        <div class="vault-visual" data-reveal>
+          <div class="vault-ring" style="width:340px;height:340px;"></div>
+          <div class="vault-ring" style="width:400px;height:400px;"></div>
+          <div class="vault-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1.8"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section id="testimoni">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Testimoni</span>
+        <h2 class="section-title font-display">Dipercaya Oleh Mereka yang <span class="text-gold">Menghargai Nilai</span></h2>
+      </div>
+      <div class="testimonial-track">
+        <div class="testimonial-card glass" data-reveal>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Proses pembelian sangat mudah dan tampilannya juga profesional. Rasanya seperti membeli emas dari perusahaan besar."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AW</div>
+            <div>
+              <div class="author-name">Andra Wicaksono</div>
+              <div class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 1.4 2.8-.3 1.2 2.5 2.5 1.2-.3 2.8L22 12l-1.4 2.4.3 2.8-2.5 1.2-1.2 2.5-2.8-.3L12 22l-2.4-1.4-2.8.3-1.2-2.5-2.5-1.2.3-2.8L2 12l1.4-2.4-.3-2.8 2.5-1.2 1.2-2.5 2.8.3z"/></svg> Pembeli Terverifikasi</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass" data-reveal data-reveal-delay="1">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Saya sudah membeli emas fisik selama bertahun-tahun dan ini platform pertama yang benar-benar terasa dibangun untuk investor modern."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MT</div>
+            <div>
+              <div class="author-name">Michelle Tanuwijaya</div>
+              <div class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 1.4 2.8-.3 1.2 2.5 2.5 1.2-.3 2.8L22 12l-1.4 2.4.3 2.8-2.5 1.2-1.2 2.5-2.8-.3L12 22l-2.4-1.4-2.8.3-1.2-2.5-2.5-1.2.3-2.8L2 12l1.4-2.4-.3-2.8 2.5-1.2 1.2-2.5 2.8.3z"/></svg> Pembeli Terverifikasi</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass" data-reveal data-reveal-delay="2">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Kemasannya saja sudah menunjukkan keseriusan perusahaan ini. Pengiriman cepat dan setiap gram sesuai sertifikat."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RS</div>
+            <div>
+              <div class="author-name">Rangga Saputra</div>
+              <div class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 1.4 2.8-.3 1.2 2.5 2.5 1.2-.3 2.8L22 12l-1.4 2.4.3 2.8-2.5 1.2-1.2 2.5-2.8-.3L12 22l-2.4-1.4-2.8.3-1.2-2.5-2.5-1.2.3-2.8L2 12l1.4-2.4-.3-2.8 2.5-1.2 1.2-2.5 2.8.3z"/></svg> Pembeli Terverifikasi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-obsidian-2" id="faq">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Pertanyaan Umum</span>
+        <h2 class="section-title font-display">Ada yang Ingin <span class="text-gold">Ditanyakan?</span></h2>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item glass">
+          <button class="faq-question">Apakah emas TAMAYA GOLD asli?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Ya. Setiap produk telah disertifikasi dan diverifikasi keasliannya secara independen, disertai sertifikat uji kemurnian pada setiap pengiriman.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Berapa kadar emas yang tersedia?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Batangan dan koin kami berkadar 999.9 fine gold (24K), sementara perhiasan menggunakan kadar 916 fine gold (22K) kecuali dinyatakan lain pada halaman produk.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Bagaimana harga emas ditentukan?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Harga Logam Mulia mengacu pada harga referensi resmi (Hartadinata Abadi / HRTA Gold) dan menyesuaikan pergerakan harga acuan tersebut setiap saat.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Bagaimana cara membeli emas?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Pilih produk dan berat yang diinginkan, lalu selesaikan proses pemesanan secara online. Anda akan menerima konfirmasi pesanan secara langsung.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Bagaimana proses pengiriman?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Setiap pesanan dikirim menggunakan kemasan tahan rusak dan diasuransikan penuh melalui mitra kurir terpercaya, dengan konfirmasi tanda tangan saat tiba.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Apakah emas bisa dijual kembali?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Ya. TAMAYA GOLD menyediakan program buyback dengan harga transparan mengikuti harga pasar yang berlaku, dikurangi biaya administrasi kecil.</div></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-question">Apakah transaksi aman?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Semua pembayaran diproses melalui jalur terenkripsi, dan setiap akun dilindungi dengan standar keamanan otentikasi modern.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-section">
+    <div class="cta-bg-object"></div>
+    <div class="cta-content">
+      <span class="eyebrow" style="justify-content:center;">Mulai Hari Ini</span>
+      <h2 class="font-display">Mulai Bangun <span class="text-gold">Kekayaan Anda</span> Dengan Emas.</h2>
+      <p>Karena sesuatu yang bernilai tidak pernah kehilangan makna.</p>
+      <a href="shop.html" class="btn btn-gold" data-magnetic>Mulai Berinvestasi</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+          <span class="brand-text">TAMAYA <b>GOLD</b></span>
+        </a>
+        <p>Investasi emas modern untuk masa depan yang lebih berharga.</p>
+        <div class="footer-social">
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9V6a1 1 0 0 1 1-1h2V2h-3a4 4 0 0 0-4 4v3H8v3h2v8h3v-8h2.5l.5-3H13z"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp" data-wa-general><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg></a>
+        </div>
+        <a href="#" class="btn btn-ghost btn-sm footer-wa-btn" data-wa-general>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+          Hubungi Kami via WhatsApp
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="shop.html">Produk</a></li>
+          <li><a href="gold-price.html">Harga Emas</a></li>
+          <li><a href="investment.html">Investasi</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Bantuan</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#cara-membeli">Cara Membeli</a></li>
+          <li><a href="contact.html">Pengiriman</a></li>
+          <li><a href="contact.html">Kebijakan Privasi</a></li>
+          <li><a href="contact.html">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:halo@tamayagold.id">halo@tamayagold.id</a></li>
+          <li><a href="tel:+622112345678">+62 21 1234 5678</a></li>
+          <li><a href="contact.html">Jakarta, Indonesia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TAMAYA GOLD. Seluruh hak dilindungi.</span>
+      <span>Dibuat dengan kepercayaan dan presisi.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gold-price.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
+<script src="js/calculator.js"></script>
+<script type="module" src="js/hero3d.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Product preview grid — one item per category first, so "Logam Mulia" always shows
+    var previewGrid = document.querySelector("[data-product-preview]");
+    if (previewGrid && window.TamayaProducts) {
+      var products = window.TamayaProducts;
+      products.renderGrid(previewGrid, products.getFeatured(8));
+      // Logam Mulia prices can change after this grid is already on screen.
+      products.onPriceChange(function () {
+        products.renderGrid(previewGrid, products.getFeatured(8));
+      });
+    }
+
+    // Gold price widget — value, LIVE/FALLBACK status, chart, refresh button
+    if (window.TamayaGoldPrice) {
+      window.TamayaGoldPrice.mountWidget(document.querySelector("[data-price-widget]"));
+    }
+  });
+</script>
+</body>
+</html>

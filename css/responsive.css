@@ -1,0 +1,116 @@
+/* ==========================================================================
+   TAMAYA GOLD — Responsive Rules
+   ========================================================================== */
+
+/* ---------- Laptop / small desktop ---------- */
+@media (max-width: 1180px) {
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-col.contact-col { grid-column: 1 / -1; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 980px) {
+  section { padding: 90px 0; }
+  section.tight { padding: 70px 0; }
+
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+
+  .hero-grid { grid-template-columns: 1fr; text-align: center; padding-top: 30px; }
+  .hero-copy { order: 2; }
+  .hero-visual { order: 1; height: 380px; }
+  .hero-subtitle { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; gap: 28px; flex-wrap: wrap; }
+
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: 1fr; gap: 46px; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; gap: 40px; }
+  .vault-visual { height: 300px; order: -1; }
+  .testimonial-track { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .container { padding-inline: 20px; }
+  section { padding: 64px 0; }
+  section.tight { padding: 52px 0; }
+
+  .brand-text { font-size: 1rem; white-space: nowrap; }
+  .brand img { height: 28px; width: 28px; }
+  .nav-actions { gap: 2px; }
+  .nav-actions .icon-btn { width: 38px; height: 38px; }
+  .nav-actions .icon-btn svg { width: 18px; height: 18px; }
+  .nav-toggle { width: 38px; height: 38px; }
+
+  .hero { min-height: auto; padding-bottom: 60px; }
+  .hero-grid { padding: 30px 20px 10px; gap: 30px; }
+  .hero-title { font-size: 2.3rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .hero-visual { height: 280px; }
+  .hero-stats { gap: 20px; margin-top: 36px; padding-top: 24px; }
+  .hero-stat b { font-size: 1.4rem; }
+  .hero-scroll-cue { display: none; }
+
+  .section-title { font-size: 1.8rem; }
+  .section-head { margin-bottom: 36px; }
+
+  .price-card { padding: 22px; }
+  .price-card-top { flex-direction: column; align-items: stretch; }
+  .period-tabs { overflow-x: auto; }
+
+  .filter-row { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; margin-inline: -20px; padding-inline: 20px; }
+  .filter-pill { flex-shrink: 0; }
+  .product-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+  .product-card { padding: 16px; border-radius: 16px; }
+  .product-visual { height: 130px; margin-bottom: 14px; }
+  .gold-object { width: 96px; height: 62px; }
+  .gold-object.coin { width: 80px; height: 80px; }
+  .product-info h3 { font-size: 1rem; }
+  .product-price { font-size: 1.2rem; }
+  .product-actions .btn { white-space: normal; font-size: 0.76rem; padding: 11px 8px; line-height: 1.3; }
+
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature-card { padding: 26px 22px; }
+
+  .calc-panel, .calc-results { padding: 26px 22px; }
+  .weight-options { gap: 8px; }
+  .weight-chip { padding: 8px 14px; font-size: 0.8rem; }
+  .result-row.highlight .value { font-size: 1.7rem; }
+
+  .trust-list { gap: 16px; }
+  .vault-visual { height: 220px; }
+  .vault-core { width: 150px; height: 150px; }
+  .vault-core svg { width: 50px; height: 50px; }
+
+  .testimonial-track { grid-template-columns: 1fr; }
+
+  .faq-question { padding: 18px 18px; font-size: 0.94rem; }
+  .faq-answer-inner { padding: 0 18px 20px; }
+
+  .cta-section { padding: 90px 0; }
+  .cta-bg-object { width: 420px; height: 420px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 34px; padding-bottom: 34px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .cart-panel, .mobile-nav-panel { width: 100vw; }
+  .search-box { width: 94vw; }
+  .page-header { padding: 150px 0 56px; }
+
+  /* On mobile the cart drawer/search overlay go full-width, so a bottom
+     toast would sit on top of their action buttons — anchor it to the
+     top instead. */
+  .toast-stack {
+    left: 16px; right: 16px; bottom: auto; top: 16px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); }
+}

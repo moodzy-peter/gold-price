@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investasi Emas — TAMAYA GOLD</title>
+<meta name="description" content="Hitung potensi investasi emas Anda bersama TAMAYA GOLD. Simulasikan jumlah emas dan estimasi nilai secara instan." />
+<meta name="theme-color" content="#07060a" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body data-page="investasi">
+
+<div class="toast-stack"></div>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-search-toggle aria-label="Cari produk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" data-cart-toggle aria-label="Keranjang belanja">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 2H2"/></svg>
+        <span class="cart-badge" data-cart-count style="display:none">0</span>
+      </button>
+      <div class="account-menu">
+        <button class="icon-btn" data-account-toggle aria-label="Akun saya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+        </button>
+        <div class="account-dropdown glass-strong">
+          <p>Masuk untuk melacak pesanan, menyimpan produk favorit, dan checkout lebih cepat.</p>
+          <button class="btn btn-gold btn-sm btn-block">Masuk</button>
+          <button class="btn btn-ghost btn-sm btn-block">Daftar Akun</button>
+        </div>
+      </div>
+      <button class="nav-toggle" data-nav-toggle aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <div class="mobile-nav-backdrop" data-nav-close></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-head">
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+      <button class="icon-btn" data-nav-close aria-label="Tutup menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <button class="btn btn-gold btn-block">Masuk</button>
+      <button class="btn btn-ghost btn-block">Daftar Akun</button>
+    </div>
+  </div>
+</div>
+
+<div class="search-overlay">
+  <div class="search-overlay-backdrop" data-search-close></div>
+  <div class="search-box glass-strong">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Cari emas batangan, koin, perhiasan..." autocomplete="off" />
+      <button class="icon-btn" data-search-close aria-label="Tutup pencarian">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-results" data-search-results></div>
+  </div>
+</div>
+
+<div class="cart-drawer">
+  <div class="cart-backdrop" data-cart-close></div>
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h3>Keranjang Anda</h3>
+      <button class="icon-btn" data-cart-close aria-label="Tutup keranjang">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-foot" data-cart-foot>
+      <div class="wa-order-summary">
+        <div class="wa-summary-row"><span>Produk</span><span data-cart-item-count>0 item</span></div>
+        <div class="wa-summary-row"><span>Total Qty</span><span data-cart-qty-count>0</span></div>
+      </div>
+      <div class="cart-subtotal"><span>Total</span><b data-cart-subtotal>Rp 0</b></div>
+      <button class="btn btn-gold btn-block btn-whatsapp" data-checkout>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        Pesan via WhatsApp
+      </button>
+      <p class="wa-note">Pesanan akan dilanjutkan melalui WhatsApp</p>
+      <p class="wa-note">Harga LM dapat berubah sewaktu-waktu dan akan dikonfirmasi tim kami.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><span>Investasi</span></div>
+      <span class="eyebrow" style="justify-content:center;">Rencanakan Masa Depan</span>
+      <h1 class="section-title font-display">Investasi Emas, <span class="text-gold">Direncanakan dengan Jelas.</span></h1>
+      <p class="section-subtitle mx-auto">Simulasikan investasi Anda dan lihat bagaimana emas dapat menjadi bagian dari strategi keuangan jangka panjang.</p>
+    </div>
+  </div>
+
+  <section class="tight">
+    <div class="container">
+      <div class="calc-grid" data-calculator data-reveal>
+        <div class="glass calc-panel">
+          <div class="field">
+            <label>Jumlah Investasi</label>
+            <div class="input-wrap">
+              <span class="prefix">Rp</span>
+              <input type="text" inputmode="numeric" data-calc-amount placeholder="10.000.000" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Pilihan Cepat Berat Emas</label>
+            <div class="weight-options">
+              <button class="weight-chip" data-calc-weight="1">1 gram</button>
+              <button class="weight-chip" data-calc-weight="5">5 gram</button>
+              <button class="weight-chip" data-calc-weight="10">10 gram</button>
+              <button class="weight-chip" data-calc-weight="25">25 gram</button>
+              <button class="weight-chip" data-calc-weight="50">50 gram</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Proyeksi Jangka Waktu</label>
+            <div class="weight-options">
+              <button class="weight-chip active" data-calc-period="1">1 Tahun</button>
+              <button class="weight-chip" data-calc-period="5">5 Tahun</button>
+              <button class="weight-chip" data-calc-period="10">10 Tahun</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-strong calc-results">
+          <div class="result-row">
+            <span class="label">Jumlah Emas</span>
+            <span class="value" data-calc-result-grams>0,00 gram</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Harga Saat Ini</span>
+            <span class="value" data-calc-result-price>Rp — / gram</span>
+          </div>
+          <div class="result-row highlight">
+            <span class="label">Estimasi Nilai Sekarang</span>
+            <span class="value" data-calc-result-value>Rp 0</span>
+          </div>
+          <div class="result-row highlight">
+            <span class="label">Estimasi Potensi Nilai</span>
+            <span class="value" data-calc-projection>Rp 0</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--ivory-faint);line-height:1.6;">
+            *Estimasi potensi nilai menggunakan asumsi rata-rata kenaikan historis emas dan bukan merupakan jaminan hasil investasi.
+          </p>
+          <a href="shop.html" class="btn btn-gold btn-block" data-magnetic>Mulai Investasi Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-obsidian-2">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Kenapa Emas</span>
+        <h2 class="section-title font-display">Emas Sebagai <span class="text-gold">Aset Jangka Panjang</span></h2>
+        <p class="section-subtitle">Selama berabad-abad, emas telah menjadi penyimpan nilai yang diakui secara global, tahan terhadap inflasi dan gejolak ekonomi.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card glass" data-reveal>
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m7 15 4-6 4 3 5-8"/></svg></div>
+          <h3>Nilai Stabil</h3>
+          <p>Emas secara historis menjaga daya beli lebih baik dibandingkan mata uang dalam jangka panjang.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="1">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg></div>
+          <h3>Aset Fisik Nyata</h3>
+          <p>Berbeda dengan aset digital, emas adalah kekayaan yang dapat Anda pegang dan simpan sendiri.</p>
+        </div>
+        <div class="feature-card glass" data-reveal data-reveal-delay="2">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <h3>Mudah Dicairkan</h3>
+          <p>Program buyback TAMAYA GOLD memudahkan Anda mencairkan emas kapan pun dibutuhkan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+          <span class="brand-text">TAMAYA <b>GOLD</b></span>
+        </a>
+        <p>Investasi emas modern untuk masa depan yang lebih berharga.</p>
+        <div class="footer-social">
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9V6a1 1 0 0 1 1-1h2V2h-3a4 4 0 0 0-4 4v3H8v3h2v8h3v-8h2.5l.5-3H13z"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp" data-wa-general><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg></a>
+        </div>
+        <a href="#" class="btn btn-ghost btn-sm footer-wa-btn" data-wa-general>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+          Hubungi Kami via WhatsApp
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="shop.html">Produk</a></li>
+          <li><a href="gold-price.html">Harga Emas</a></li>
+          <li><a href="investment.html">Investasi</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Bantuan</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#cara-membeli">Cara Membeli</a></li>
+          <li><a href="contact.html">Pengiriman</a></li>
+          <li><a href="contact.html">Kebijakan Privasi</a></li>
+          <li><a href="contact.html">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:halo@tamayagold.id">halo@tamayagold.id</a></li>
+          <li><a href="tel:+622112345678">+62 21 1234 5678</a></li>
+          <li><a href="contact.html">Jakarta, Indonesia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TAMAYA GOLD. Seluruh hak dilindungi.</span>
+      <span>Dibuat dengan kepercayaan dan presisi.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gold-price.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
+<script src="js/calculator.js"></script>
+</body>
+</html>

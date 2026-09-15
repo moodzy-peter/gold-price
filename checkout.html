@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkout — TAMAYA GOLD</title>
+<meta name="description" content="Lengkapi data pengiriman untuk melanjutkan pemesanan emas TAMAYA GOLD melalui WhatsApp." />
+<meta name="theme-color" content="#07060a" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  .checkout-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: flex-start; }
+  .checkout-panel { padding: 34px; }
+  .checkout-section + .checkout-section { margin-top: 34px; padding-top: 34px; border-top: 1px solid rgba(212,175,55,0.12); }
+  .checkout-section h3 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 4px; }
+  .checkout-section .section-num { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; color: var(--gold-300); text-transform: uppercase; }
+  .co-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .co-field { margin-top: 20px; }
+  .co-field label { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--gold-300); margin-bottom: 8px; }
+  .co-field input, .co-field select, .co-field textarea {
+    width: 100%; border: 1px solid rgba(212,175,55,0.25); border-radius: var(--radius-sm);
+    background: rgba(0,0,0,0.2); padding: 13px 16px; color: var(--ivory); font-family: var(--font-sans); font-size: 0.95rem;
+    transition: border-color .3s ease, box-shadow .3s ease;
+  }
+  .co-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23e0b962' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+  .co-field textarea { resize: vertical; min-height: 90px; }
+  .co-field input:focus, .co-field select:focus, .co-field textarea:focus { outline: none; border-color: var(--gold-400); box-shadow: 0 0 0 3px rgba(212,175,55,0.12); }
+  .co-field.has-error input, .co-field.has-error select, .co-field.has-error textarea { border-color: #f87171; }
+  .co-error { display: none; margin-top: 6px; font-size: 0.78rem; color: #fca5a5; }
+  .co-field.has-error .co-error { display: block; }
+
+  .co-order-line { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(212,175,55,0.1); }
+  .co-order-line:last-child { border-bottom: none; }
+  .co-order-visual { width: 46px; height: 46px; border-radius: 10px; background: rgba(212,175,55,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .co-order-visual .gold-object { width: 34px; height: 22px; }
+  .co-order-visual .gold-object.coin { width: 30px; height: 30px; }
+  .co-order-info { flex: 1; min-width: 0; }
+  .co-order-info h4 { font-size: 0.88rem; font-weight: 700; }
+  .co-order-info span { font-size: 0.78rem; color: var(--ivory-faint); }
+  .co-order-price { font-family: var(--font-serif); font-size: 1rem; color: var(--gold-200); white-space: nowrap; }
+
+  .co-summary-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.92rem; color: var(--ivory-faint); }
+  .co-summary-row b { color: var(--ivory); font-weight: 700; }
+  .co-summary-row.total { border-top: 1px solid rgba(212,175,55,0.16); margin-top: 6px; padding-top: 16px; font-size: 1.05rem; color: var(--ivory); }
+  .co-summary-row.total b { font-family: var(--font-serif); font-size: 1.5rem; color: var(--gold-200); }
+
+  .co-empty { text-align: center; padding: 60px 20px; }
+  .co-empty svg { width: 52px; height: 52px; color: rgba(212,175,55,0.4); margin: 0 auto 18px; }
+
+  .co-shipping-note { margin-top: 18px; padding: 14px 16px; border-radius: var(--radius-sm); background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.14); font-size: 0.8rem; color: var(--ivory-faint); line-height: 1.6; }
+
+  @media (max-width: 980px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .checkout-panel { padding: 24px; }
+    .co-form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="checkout">
+
+<div class="toast-stack"></div>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-search-toggle aria-label="Cari produk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" data-cart-toggle aria-label="Keranjang belanja">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 2H2"/></svg>
+        <span class="cart-badge" data-cart-count style="display:none">0</span>
+      </button>
+      <div class="account-menu">
+        <button class="icon-btn" data-account-toggle aria-label="Akun saya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+        </button>
+        <div class="account-dropdown glass-strong">
+          <p>Masuk untuk melacak pesanan, menyimpan produk favorit, dan checkout lebih cepat.</p>
+          <button class="btn btn-gold btn-sm btn-block">Masuk</button>
+          <button class="btn btn-ghost btn-sm btn-block">Daftar Akun</button>
+        </div>
+      </div>
+      <button class="nav-toggle" data-nav-toggle aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <div class="mobile-nav-backdrop" data-nav-close></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-head">
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+      <button class="icon-btn" data-nav-close aria-label="Tutup menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <button class="btn btn-gold btn-block">Masuk</button>
+      <button class="btn btn-ghost btn-block">Daftar Akun</button>
+    </div>
+  </div>
+</div>
+
+<div class="search-overlay">
+  <div class="search-overlay-backdrop" data-search-close></div>
+  <div class="search-box glass-strong">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Cari emas batangan, koin, perhiasan..." autocomplete="off" />
+      <button class="icon-btn" data-search-close aria-label="Tutup pencarian">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-results" data-search-results></div>
+  </div>
+</div>
+
+<div class="cart-drawer">
+  <div class="cart-backdrop" data-cart-close></div>
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h3>Keranjang Anda</h3>
+      <button class="icon-btn" data-cart-close aria-label="Tutup keranjang">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-foot" data-cart-foot>
+      <div class="wa-order-summary">
+        <div class="wa-summary-row"><span>Produk</span><span data-cart-item-count>0 item</span></div>
+        <div class="wa-summary-row"><span>Total Qty</span><span data-cart-qty-count>0</span></div>
+      </div>
+      <div class="cart-subtotal"><span>Total</span><b data-cart-subtotal>Rp 0</b></div>
+      <button class="btn btn-gold btn-block btn-whatsapp" data-checkout>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        Pesan via WhatsApp
+      </button>
+      <p class="wa-note">Pesanan akan dilanjutkan melalui WhatsApp</p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="page-header" style="padding-bottom:56px;">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="shop.html">Produk</a><span>/</span><span>Checkout</span></div>
+      <span class="eyebrow" style="justify-content:center;">Selesaikan Pesanan</span>
+      <h1 class="section-title font-display">Checkout <span class="text-gold">Pesanan Anda</span></h1>
+      <p class="section-subtitle mx-auto">Lengkapi data pengiriman, lalu lanjutkan pesanan melalui WhatsApp. Tim kami akan mengonfirmasi ketersediaan dan pembayaran secara langsung.</p>
+    </div>
+  </div>
+
+  <section class="tight" style="padding-top:0;">
+    <div class="container">
+
+      <div data-checkout-empty class="glass co-empty" style="display:none;max-width:520px;margin:0 auto;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 2H2"/></svg>
+        <p style="color:var(--ivory-faint);margin-bottom:20px;">Keranjang Anda masih kosong. Pilih produk terlebih dahulu sebelum checkout.</p>
+        <a href="shop.html" class="btn btn-gold" data-magnetic>Lihat Produk</a>
+      </div>
+
+      <div data-checkout-content class="checkout-grid">
+        <div class="glass checkout-panel">
+          <div class="checkout-section">
+            <span class="section-num">1. Data Pengiriman</span>
+            <h3>Alamat Pengiriman</h3>
+
+            <div class="co-form-row">
+              <div class="co-field" data-field="name">
+                <label>Nama Lengkap</label>
+                <input type="text" data-co-name placeholder="Nama Anda" />
+                <div class="co-error">Nama lengkap wajib diisi.</div>
+              </div>
+              <div class="co-field" data-field="phone">
+                <label>Nomor WhatsApp</label>
+                <input type="tel" inputmode="tel" data-co-phone placeholder="08xxxxxxxxxx" />
+                <div class="co-error">Nomor WhatsApp wajib diisi.</div>
+              </div>
+            </div>
+
+            <div class="co-form-row">
+              <div class="co-field" data-field="province">
+                <label>Provinsi</label>
+                <select data-co-province>
+                  <option value="">Pilih Provinsi</option>
+                </select>
+                <div class="co-error">Provinsi wajib dipilih.</div>
+              </div>
+              <div class="co-field" data-field="city">
+                <label>Kota / Kabupaten</label>
+                <input type="text" data-co-city placeholder="Cth. Cirebon" />
+                <div class="co-error">Kota/Kabupaten wajib diisi.</div>
+              </div>
+            </div>
+
+            <div class="co-form-row">
+              <div class="co-field" data-field="district">
+                <label>Kecamatan</label>
+                <input type="text" data-co-district placeholder="Kecamatan" />
+                <div class="co-error">Kecamatan wajib diisi.</div>
+              </div>
+              <div class="co-field" data-field="subdistrict">
+                <label>Kelurahan</label>
+                <input type="text" data-co-subdistrict placeholder="Kelurahan" />
+                <div class="co-error">Kelurahan wajib diisi.</div>
+              </div>
+            </div>
+
+            <div class="co-form-row">
+              <div class="co-field" data-field="postalCode">
+                <label>Kode Pos</label>
+                <input type="text" inputmode="numeric" data-co-postal placeholder="45xxx" />
+                <div class="co-error">Kode pos wajib diisi.</div>
+              </div>
+              <div></div>
+            </div>
+
+            <div class="co-field" data-field="address">
+              <label>Alamat Lengkap</label>
+              <textarea data-co-address placeholder="Nama jalan, nomor rumah, RT/RW, patokan..."></textarea>
+              <div class="co-error">Mohon isi alamat lengkap terlebih dahulu.</div>
+            </div>
+
+            <div class="co-shipping-note">
+              <strong style="color:var(--gold-200);">Pengiriman TAMAYA GOLD.</strong> Gratis ongkir untuk wilayah Jawa Barat. Di luar Jawa Barat dikenakan tambahan biaya pengiriman Rp20.000. Biaya pengiriman yang tercantum merupakan biaya tambahan standar — detail pengiriman akan dikonfirmasi oleh tim TAMAYA GOLD melalui WhatsApp.
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-strong checkout-panel" style="position:sticky;top:110px;">
+          <div class="checkout-section" style="margin-top:0;padding-top:0;border-top:none;">
+            <span class="section-num">2. Pesanan Anda</span>
+            <h3>Ringkasan Produk</h3>
+            <div data-co-order-lines style="margin-top:16px;"></div>
+          </div>
+
+          <div class="checkout-section">
+            <span class="section-num">3–4. Pengiriman &amp; Total</span>
+            <div style="margin-top:16px;">
+              <div class="co-summary-row"><span>Subtotal Produk</span><b data-co-subtotal>Rp 0</b></div>
+              <div class="co-summary-row"><span>Pengiriman</span><b data-co-shipping>Gratis</b></div>
+              <div class="co-summary-row total"><span>Total Pembayaran</span><b data-co-total>Rp 0</b></div>
+            </div>
+            <div class="price-market-note" style="margin-top:16px;">
+              Harga LM dapat berubah sewaktu-waktu mengikuti harga acuan. Harga final akan dikonfirmasi oleh tim TAMAYA GOLD melalui WhatsApp sebelum pembayaran.
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <span class="section-num">5. Lanjutkan Pesanan</span>
+            <div class="product-actions" style="margin-top:16px;">
+              <button class="btn btn-gold btn-block btn-whatsapp" data-co-submit>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+                Lanjut ke WhatsApp
+              </button>
+            </div>
+            <p class="wa-note">Data Anda hanya digunakan untuk menyusun pesan WhatsApp dan tidak disimpan secara permanen.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+          <span class="brand-text">TAMAYA <b>GOLD</b></span>
+        </a>
+        <p>Investasi emas modern untuk masa depan yang lebih berharga.</p>
+        <div class="footer-social">
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9V6a1 1 0 0 1 1-1h2V2h-3a4 4 0 0 0-4 4v3H8v3h2v8h3v-8h2.5l.5-3H13z"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp" data-wa-general><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg></a>
+        </div>
+        <a href="#" class="btn btn-ghost btn-sm footer-wa-btn" data-wa-general>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+          Chat WhatsApp
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="shop.html">Produk</a></li>
+          <li><a href="gold-price.html">Harga Emas</a></li>
+          <li><a href="investment.html">Investasi</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Bantuan</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#cara-membeli">Cara Membeli</a></li>
+          <li><a href="contact.html">Pengiriman</a></li>
+          <li><a href="contact.html">Kebijakan Privasi</a></li>
+          <li><a href="contact.html">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:halo@tamayagold.id">halo@tamayagold.id</a></li>
+          <li><a href="tel:+622112345678">+62 21 1234 5678</a></li>
+          <li><a href="contact.html">Jakarta, Indonesia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TAMAYA GOLD. Seluruh hak dilindungi.</span>
+      <span>Dibuat dengan kepercayaan dan presisi.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gold-price.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var products = window.TamayaProducts;
+    var cart = window.TamayaCart;
+    var wa = window.TamayaWhatsApp;
+    if (!products || !cart || !wa) return;
+
+    var emptyEl = document.querySelector("[data-checkout-empty]");
+    var contentEl = document.querySelector("[data-checkout-content]");
+    var provinceSelect = document.querySelector("[data-co-province]");
+
+    // Populate province dropdown from the single shared list in whatsapp.js
+    wa.PROVINCES.forEach(function (name) {
+      var opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      provinceSelect.appendChild(opt);
+    });
+
+    var fields = {
+      name: document.querySelector("[data-co-name]"),
+      phone: document.querySelector("[data-co-phone]"),
+      province: provinceSelect,
+      city: document.querySelector("[data-co-city]"),
+      district: document.querySelector("[data-co-district]"),
+      subdistrict: document.querySelector("[data-co-subdistrict]"),
+      postalCode: document.querySelector("[data-co-postal]"),
+      address: document.querySelector("[data-co-address]"),
+    };
+
+    function clearFieldError(name) {
+      var wrap = document.querySelector('.co-field[data-field="' + name + '"]');
+      if (wrap) wrap.classList.remove("has-error");
+    }
+    function setFieldError(name) {
+      var wrap = document.querySelector('.co-field[data-field="' + name + '"]');
+      if (wrap) wrap.classList.add("has-error");
+    }
+    Object.keys(fields).forEach(function (key) {
+      fields[key].addEventListener("input", function () { clearFieldError(key); });
+      fields[key].addEventListener("change", function () { clearFieldError(key); });
+    });
+
+    function renderOrder() {
+      var lines = cart.getItems();
+      var linesEl = document.querySelector("[data-co-order-lines]");
+      var subtotalEl = document.querySelector("[data-co-subtotal]");
+      var shippingEl = document.querySelector("[data-co-shipping]");
+      var totalEl = document.querySelector("[data-co-total]");
+
+      if (!lines.length) {
+        emptyEl.style.display = "block";
+        contentEl.style.display = "none";
+        return;
+      }
+      emptyEl.style.display = "none";
+      contentEl.style.display = "grid";
+
+      linesEl.innerHTML = lines
+        .map(function (line) {
+          var p = products.getById(line.id);
+          if (!p) return "";
+          var subtotal = p.price * line.qty;
+          return (
+            '<div class="co-order-line"><div class="co-order-visual">' +
+            window.TamayaApp.goldObjectMarkup(p.visual, true) +
+            '</div><div class="co-order-info"><h4>' +
+            window.TamayaApp.nameWithWeight(p) +
+            '</h4><span>Qty ' + line.qty + " &times; " + window.TamayaGoldPrice.formatRupiah(p.price) + '</span></div>' +
+            '<div class="co-order-price">' + window.TamayaGoldPrice.formatRupiah(subtotal) + "</div></div>"
+          );
+        })
+        .join("");
+
+      var subtotal = cart.getSubtotal();
+      var shippingCost = wa.calculateShipping(provinceSelect.value);
+      var total = subtotal + shippingCost;
+
+      subtotalEl.textContent = window.TamayaGoldPrice.formatRupiah(subtotal);
+      shippingEl.textContent = shippingCost === 0 ? "Gratis" : window.TamayaGoldPrice.formatRupiah(shippingCost);
+      totalEl.textContent = window.TamayaGoldPrice.formatRupiah(total);
+    }
+
+    cart.onChange(renderOrder);
+    provinceSelect.addEventListener("change", renderOrder);
+    // Logam Mulia prices can change (live refresh or fallback resolution)
+    // while a customer is mid-checkout — keep the order summary in sync.
+    if (products.onPriceChange) products.onPriceChange(renderOrder);
+    renderOrder();
+
+    document.querySelector("[data-co-submit]").addEventListener("click", function () {
+      if (!cart.getCount()) {
+        window.TamayaToast("Keranjang Anda masih kosong. Silakan pilih produk terlebih dahulu.");
+        return;
+      }
+
+      var customer = {
+        name: fields.name.value.trim(),
+        phone: fields.phone.value.trim(),
+        province: fields.province.value.trim(),
+        city: fields.city.value.trim(),
+        district: fields.district.value.trim(),
+        subdistrict: fields.subdistrict.value.trim(),
+        postalCode: fields.postalCode.value.trim(),
+        address: fields.address.value.trim(),
+      };
+
+      var firstInvalidField = null;
+      Object.keys(customer).forEach(function (key) {
+        if (!customer[key]) {
+          setFieldError(key);
+          if (!firstInvalidField) firstInvalidField = key;
+        } else {
+          clearFieldError(key);
+        }
+      });
+
+      if (firstInvalidField) {
+        window.TamayaToast("Mohon lengkapi data pengiriman terlebih dahulu.");
+        fields[firstInvalidField].scrollIntoView({ behavior: "smooth", block: "center" });
+        fields[firstInvalidField].focus();
+        return;
+      }
+
+      wa.openCheckoutOrder(customer);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detail Produk — TAMAYA GOLD</title>
+<meta name="description" content="Detail produk emas TAMAYA GOLD — kemurnian, berat, harga, dan ketersediaan stok." />
+<meta name="theme-color" content="#07060a" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .pd-visual { height: 420px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at 50% 35%, rgba(212,175,55,0.16), transparent 70%); }
+  .pd-visual .gold-object { width: 260px; height: 170px; animation: float-y 6s ease-in-out infinite; }
+  .pd-visual .gold-object.coin { width: 220px; height: 220px; }
+  .pd-qty { display: flex; align-items: center; gap: 14px; margin: 26px 0; }
+  .pd-qty button { width: 42px; height: 42px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.25); font-size: 1.2rem; }
+  .pd-qty span { font-family: var(--font-serif); font-size: 1.3rem; min-width: 30px; text-align: center; }
+  .pd-desc { margin-top: 26px; color: var(--ivory-faint); line-height: 1.8; max-width: 520px; }
+  .pd-info-list { display: flex; flex-direction: column; gap: 14px; margin-top: 30px; }
+  .pd-info-list div { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(212,175,55,0.12); font-size: 0.92rem; }
+  .pd-info-list span:first-child { color: var(--ivory-faint); }
+  @media (max-width: 980px) { .pd-grid { grid-template-columns: 1fr; gap: 36px; } .pd-visual { height: 320px; } }
+</style>
+</head>
+<body data-page="produk">
+
+<div class="toast-stack"></div>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-search-toggle aria-label="Cari produk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" data-cart-toggle aria-label="Keranjang belanja">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 2H2"/></svg>
+        <span class="cart-badge" data-cart-count style="display:none">0</span>
+      </button>
+      <div class="account-menu">
+        <button class="icon-btn" data-account-toggle aria-label="Akun saya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+        </button>
+        <div class="account-dropdown glass-strong">
+          <p>Masuk untuk melacak pesanan, menyimpan produk favorit, dan checkout lebih cepat.</p>
+          <button class="btn btn-gold btn-sm btn-block">Masuk</button>
+          <button class="btn btn-ghost btn-sm btn-block">Daftar Akun</button>
+        </div>
+      </div>
+      <button class="nav-toggle" data-nav-toggle aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <div class="mobile-nav-backdrop" data-nav-close></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-head">
+      <span class="brand-text">TAMAYA <b>GOLD</b></span>
+      <button class="icon-btn" data-nav-close aria-label="Tutup menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" data-nav-link="beranda">Beranda</a>
+      <a href="shop.html" data-nav-link="produk">Produk</a>
+      <a href="gold-price.html" data-nav-link="harga-emas">Harga Emas</a>
+      <a href="investment.html" data-nav-link="investasi">Investasi</a>
+      <a href="about.html" data-nav-link="tentang">Tentang Kami</a>
+      <a href="contact.html" data-nav-link="kontak">Kontak</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <button class="btn btn-gold btn-block">Masuk</button>
+      <button class="btn btn-ghost btn-block">Daftar Akun</button>
+    </div>
+  </div>
+</div>
+
+<div class="search-overlay">
+  <div class="search-overlay-backdrop" data-search-close></div>
+  <div class="search-box glass-strong">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Cari emas batangan, koin, perhiasan..." autocomplete="off" />
+      <button class="icon-btn" data-search-close aria-label="Tutup pencarian">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-results" data-search-results></div>
+  </div>
+</div>
+
+<div class="cart-drawer">
+  <div class="cart-backdrop" data-cart-close></div>
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h3>Keranjang Anda</h3>
+      <button class="icon-btn" data-cart-close aria-label="Tutup keranjang">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-foot" data-cart-foot>
+      <div class="wa-order-summary">
+        <div class="wa-summary-row"><span>Produk</span><span data-cart-item-count>0 item</span></div>
+        <div class="wa-summary-row"><span>Total Qty</span><span data-cart-qty-count>0</span></div>
+      </div>
+      <div class="cart-subtotal"><span>Total</span><b data-cart-subtotal>Rp 0</b></div>
+      <button class="btn btn-gold btn-block btn-whatsapp" data-checkout>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+        Pesan via WhatsApp
+      </button>
+      <p class="wa-note">Pesanan akan dilanjutkan melalui WhatsApp</p>
+      <p class="wa-note">Harga LM dapat berubah sewaktu-waktu dan akan dikonfirmasi tim kami.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="page-header" style="padding-bottom:0;">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="shop.html">Produk</a><span>/</span><span data-pd-crumb>Detail Produk</span></div>
+    </div>
+  </div>
+
+  <section class="tight">
+    <div class="container pd-grid">
+      <div class="pd-visual" data-pd-visual></div>
+      <div>
+        <span class="eyebrow" data-pd-category>Emas Batangan</span>
+        <h1 class="section-title font-display" data-pd-name style="font-size:clamp(1.8rem,3.4vw,2.6rem);">Nama Produk</h1>
+        <div class="product-price" style="font-size:2rem;" data-pd-price>Rp 0</div>
+        <div class="product-stock" data-pd-stock>Tersedia</div>
+        <div class="price-market-note" style="margin-top:14px;">Harga LM dapat berubah sewaktu-waktu mengikuti harga acuan. Harga final akan dikonfirmasi oleh tim TAMAYA GOLD melalui WhatsApp sebelum pembayaran.</div>
+
+        <div class="pd-qty">
+          <button data-pd-qty-dec aria-label="Kurangi jumlah">−</button>
+          <span data-pd-qty>1</span>
+          <button data-pd-qty-inc aria-label="Tambah jumlah">+</button>
+        </div>
+
+        <div class="product-actions" style="max-width:420px;">
+          <button class="btn btn-gold btn-block" data-pd-add>Tambah ke Keranjang</button>
+          <button class="btn btn-ghost btn-block" data-pd-wa-inquiry>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+            Tanya Produk via WhatsApp
+          </button>
+        </div>
+
+        <p class="pd-desc" data-pd-desc>Deskripsi produk akan tampil di sini.</p>
+
+        <div class="pd-info-list">
+          <div><span>Berat</span><span data-pd-weight>—</span></div>
+          <div><span>Kemurnian</span><span data-pd-purity>—</span></div>
+          <div><span>Kategori</span><span data-pd-category-2>—</span></div>
+          <div><span>Sertifikasi</span><span>Tersertifikasi Resmi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-obsidian-2 tight">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Anda Mungkin Suka</span>
+        <h2 class="section-title font-display">Produk <span class="text-gold">Terkait</span></h2>
+      </div>
+      <div class="product-grid" data-related-grid></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logo.png" alt="Logo TAMAYA GOLD" width="36" height="36" />
+          <span class="brand-text">TAMAYA <b>GOLD</b></span>
+        </a>
+        <p>Investasi emas modern untuk masa depan yang lebih berharga.</p>
+        <div class="footer-social">
+          <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9V6a1 1 0 0 1 1-1h2V2h-3a4 4 0 0 0-4 4v3H8v3h2v8h3v-8h2.5l.5-3H13z"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg></a>
+          <a href="#" class="icon-btn" aria-label="WhatsApp" data-wa-general><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg></a>
+        </div>
+        <a href="#" class="btn btn-ghost btn-sm footer-wa-btn" data-wa-general>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.3 8.3 0 0 1-4-1L3 21l2.1-5.6a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+          Hubungi Kami via WhatsApp
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="shop.html">Produk</a></li>
+          <li><a href="gold-price.html">Harga Emas</a></li>
+          <li><a href="investment.html">Investasi</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="contact.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Bantuan</h4>
+        <ul>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#cara-membeli">Cara Membeli</a></li>
+          <li><a href="contact.html">Pengiriman</a></li>
+          <li><a href="contact.html">Kebijakan Privasi</a></li>
+          <li><a href="contact.html">Syarat &amp; Ketentuan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:halo@tamayagold.id">halo@tamayagold.id</a></li>
+          <li><a href="tel:+622112345678">+62 21 1234 5678</a></li>
+          <li><a href="contact.html">Jakarta, Indonesia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TAMAYA GOLD. Seluruh hak dilindungi.</span>
+      <span>Dibuat dengan kepercayaan dan presisi.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gold-price.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var products = window.TamayaProducts;
+    if (!products) return;
+
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get("id");
+    var product = (id && products.getById(id)) || products.PRODUCTS[0];
+    var qty = 1;
+
+    function render() {
+      document.querySelector("[data-pd-crumb]").textContent = product.name;
+      document.title = product.name + " — TAMAYA GOLD";
+      document.querySelector("[data-pd-visual]").innerHTML = products.renderVisual(product.visual);
+      document.querySelectorAll("[data-pd-category]").forEach(function (el) { el.textContent = product.categoryLabel; });
+      document.querySelector("[data-pd-category-2]").textContent = product.categoryLabel;
+      var nameHasWeight = product.name.indexOf("Gram") !== -1;
+      document.querySelector("[data-pd-name]").textContent = nameHasWeight ? product.name : product.name + " " + product.weight + " Gram";
+      document.querySelector("[data-pd-price]").textContent = window.TamayaGoldPrice.formatRupiah(product.price);
+      var stockEl = document.querySelector("[data-pd-stock]");
+      stockEl.textContent = product.stockLabel;
+      stockEl.className = "product-stock" + (product.inStock ? "" : " out");
+      document.querySelector("[data-pd-desc]").textContent = products.getDescription(product);
+      document.querySelector("[data-pd-weight]").textContent = product.weight + " Gram";
+      document.querySelector("[data-pd-purity]").textContent = product.purity;
+      document.querySelector("[data-pd-qty]").textContent = qty;
+
+      var addBtn = document.querySelector("[data-pd-add]");
+      addBtn.disabled = !product.inStock;
+      addBtn.textContent = product.inStock ? "Tambah ke Keranjang" : "Stok Habis";
+
+      var related = products.PRODUCTS.filter(function (p) { return p.category === product.category && p.id !== product.id; }).slice(0, 4);
+      if (!related.length) related = products.PRODUCTS.filter(function (p) { return p.id !== product.id; }).slice(0, 4);
+      products.renderGrid(document.querySelector("[data-related-grid]"), related);
+    }
+
+    document.querySelector("[data-pd-qty-inc]").addEventListener("click", function () {
+      qty = Math.min(qty + 1, 99);
+      document.querySelector("[data-pd-qty]").textContent = qty;
+    });
+    document.querySelector("[data-pd-qty-dec]").addEventListener("click", function () {
+      qty = Math.max(qty - 1, 1);
+      document.querySelector("[data-pd-qty]").textContent = qty;
+    });
+    document.querySelector("[data-pd-add]").addEventListener("click", function () {
+      if (!product.inStock) return;
+      window.TamayaCart.add(product.id, qty);
+      window.TamayaToast(product.name + " ditambahkan ke keranjang.");
+    });
+    document.querySelector("[data-pd-wa-inquiry]").addEventListener("click", function () {
+      if (window.TamayaWhatsApp) window.TamayaWhatsApp.openProductInquiry(product);
+    });
+
+    // Logam Mulia prices can change (live refresh or fallback resolution)
+    // after this page has already rendered — keep the displayed price fresh.
+    if (products.onPriceChange) products.onPriceChange(render);
+
+    render();
+  });
+</script>
+</body>
+</html>
