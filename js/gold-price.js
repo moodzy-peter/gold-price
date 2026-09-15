@@ -31,8 +31,10 @@
 
   var GOLD_PRICE_CONFIG = {
     fallbackPricePerGram: 2439000,
-    // Where a human would go to verify the price themselves (shown as
-    // clickable "Sumber Harga Resmi" links in the UI).
+    // The actual supplier homepages. NOT linked or named anywhere in the UI
+    // on purpose — TAMAYA GOLD is a reseller, so customers are never handed
+    // a direct path to buy from the supplier instead. Kept here only so the
+    // proxy fetch functions below have something to attribute internally.
     officialSources: {
       primary: "https://hartadinataabadi.co.id/",
       secondary: "https://hrtagold.id/id/gold-price",
@@ -73,6 +75,38 @@
       updatedAtLabel: state.updatedAtLabel,
       lastCheckedAt: state.lastCheckedAt,
     };
+  }
+
+  // Shared across every page on the site via localStorage — without this,
+  // index.html and gold-price.html (or any two tabs) each run their own
+  // independent fetch on load and can legitimately show different numbers
+  // (one lands on LIVE, the other on FALLBACK from a transient hiccup, or
+  // the upstream price simply ticks between the two loads). Caching the
+  // resolved state means every page agrees on the same price for the
+  // lifetime of CACHE_TTL_MS, and only the first page to go stale re-fetches
+  // for everyone.
+  var CACHE_KEY = "tamaya_gold_price_cache_v1";
+  var CACHE_TTL_MS = GOLD_PRICE_CONFIG.autoRefreshMs;
+
+  function loadCachedState() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      var cached = JSON.parse(raw);
+      if (!cached || typeof cached.lastCheckedAt !== "number") return null;
+      if (Date.now() - cached.lastCheckedAt > CACHE_TTL_MS) return null; // stale
+      return cached;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveCachedState() {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(getState()));
+    } catch (e) {
+      /* storage unavailable — each page just falls back to fetching independently */
+    }
   }
 
   var listeners = [];
@@ -210,6 +244,7 @@
         state.updatedAtLabel = null;
       }
       state.lastCheckedAt = Date.now();
+      saveCachedState();
       notify();
       return getState();
     } finally {
@@ -554,7 +589,11 @@
         statusEl.classList.toggle("is-fallback", !snap.isLive);
       }
       if (statusTextEl) statusTextEl.textContent = snap.isLive ? "LIVE" : "FALLBACK";
-      if (sourceEl) sourceEl.textContent = snap.isLive ? snap.source : "Fallback internal";
+      // Deliberately generic — snap.source/sourceUrl name the specific
+      // supplier (Hartadinata Abadi/EMASKU) internally, but TAMAYA GOLD is
+      // a reseller and customers should never be handed a direct path to
+      // buy from the supplier instead. Keep the brand name out of the UI.
+      if (sourceEl) sourceEl.textContent = snap.isLive ? "Pasar Emas Resmi" : "Cadangan Sistem";
       if (updatedEl) updatedEl.textContent = formatTimestamp(snap);
       if (fallbackNoteEl) fallbackNoteEl.style.display = snap.isLive ? "none" : "block";
     }
@@ -637,12 +676,25 @@
     mountWidget: mountWidget,
   };
 
-  // Attempt a live refresh once per page load. Realistically resolves to
-  // FALLBACK today (see the CORS note at the top of this file) but keeps
-  // every page's displayed price/status/timestamp consistent and correct
-  // either way. Manual refresh is wired separately by the price widget.
+  // On load: reuse a still-fresh cached price if every page recently agreed
+  // on one (see saveCachedState() above — this is what keeps index.html and
+  // gold-price.html, or any two tabs, showing the exact same number instead
+  // of each independently fetching and potentially landing on different
+  // results). Only fetch fresh when the cache is missing or stale. Manual
+  // refresh (the widget's button) always fetches fresh regardless.
   document.addEventListener("DOMContentLoaded", function () {
-    refreshGoldPrice();
+    var cached = loadCachedState();
+    if (cached) {
+      state.pricePerGram = cached.pricePerGram;
+      state.isLive = cached.isLive;
+      state.source = cached.source;
+      state.sourceUrl = cached.sourceUrl;
+      state.updatedAtLabel = cached.updatedAtLabel;
+      state.lastCheckedAt = cached.lastCheckedAt;
+      notify();
+    } else {
+      refreshGoldPrice();
+    }
 
     if (GOLD_PRICE_CONFIG.autoRefreshMs > 0) {
       setInterval(function () {

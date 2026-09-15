@@ -559,17 +559,6 @@ section.tight { padding: 90px 0; }
   opacity: 0.9;
 }
 
-.price-sources {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(212,175,55,0.1);
-}
-.price-sources .label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ivory-faint); opacity: 0.7; margin-bottom: 10px; }
-.price-sources-list { display: flex; flex-wrap: wrap; gap: 10px 22px; }
-.price-sources-list a { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--gold-200); transition: color .3s ease; }
-.price-sources-list a:hover { color: var(--ivory); }
-.price-sources-list a svg { width: 13px; height: 13px; }
-
 .chart-history-note {
   margin-top: 10px;
   font-size: 0.74rem;
