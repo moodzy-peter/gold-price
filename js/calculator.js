@@ -29,7 +29,19 @@
     var projectionOut = root.querySelector("[data-calc-projection]");
     var periodButtons = root.querySelectorAll("[data-calc-period]");
 
-    var currentPrice = (global.TamayaGoldPrice && global.TamayaGoldPrice.getState().pricePerGram) || 2439000;
+    // TAMAYA's actual selling price per gram (reference + margin) — the same
+    // number a customer would actually pay buying 1 gram. Using the raw
+    // reference price here would both understate how much gold the
+    // customer's money really buys AND expose the pre-margin number right
+    // next to marked-up product prices elsewhere on the site.
+    function currentSellingPricePerGram() {
+      if (global.TamayaProducts && typeof global.TamayaProducts.getSellingPrice === "function") {
+        return global.TamayaProducts.getSellingPrice(1);
+      }
+      return (global.TamayaGoldPrice && global.TamayaGoldPrice.getState().pricePerGram) || 2439000;
+    }
+
+    var currentPrice = currentSellingPricePerGram();
     var selectedYears = 1;
 
     function fmtIDR(v) {
@@ -37,12 +49,9 @@
     }
 
     function refreshPrice() {
-      if (!global.TamayaGoldPrice) return;
-      global.TamayaGoldPrice.fetchSnapshot().then(function (snap) {
-        currentPrice = snap.pricePerGram;
-        if (priceOut) priceOut.textContent = fmtIDR(currentPrice) + " / gram";
-        recalculate();
-      });
+      currentPrice = currentSellingPricePerGram();
+      if (priceOut) priceOut.textContent = fmtIDR(currentPrice) + " / gram";
+      recalculate();
     }
 
     function recalculate() {

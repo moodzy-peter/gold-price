@@ -23,16 +23,17 @@
 
   /**
    * Logam Mulia pricing — the only line tied to the live gold-price service.
-   * Reference price: PT Hartadinata Abadi / HRTA Gold (see js/gold-price.js
-   * for the live-fetch-with-fallback mechanics); falls back to
-   * fallbackBasePricePerGram below if js/gold-price.js hasn't loaded at all.
+   * Reference (wholesale) price comes from js/gold-price.js's live-fetch-
+   * with-fallback service; falls back to fallbackBasePricePerGram below if
+   * js/gold-price.js hasn't loaded at all.
    *
-   * A margin (marginPct) is applied on top of the reference price to reach
-   * the selling price. Only the final selling price is ever surfaced in the
-   * UI or in the WhatsApp message — the reference price and the margin are
-   * never shown together anywhere, so the margin itself isn't exposed to
-   * customers (the gold-price widget's "Harga Acuan LM" is explicitly
-   * labeled as a market reference, not TAMAYA's price).
+   * getSellingPrice() below is the ONLY place the margin is applied, and
+   * this is the ONLY price that should ever reach the UI or the WhatsApp
+   * message — never the raw reference price on its own. The gold-price
+   * widget and the calculator both call getSellingPrice(1) rather than
+   * reading the raw reference price directly, specifically so the raw
+   * number and a marked-up product price never appear side by side (that
+   * would let a customer just divide the two and read off the margin).
    */
   var GOLD_CONFIG = {
     fallbackBasePricePerGram: 2439000,

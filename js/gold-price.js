@@ -1,10 +1,16 @@
 /* ==========================================================================
    TAMAYA GOLD — Gold Price Service
-   Single source of truth for the Logam Mulia REFERENCE price (per gram).
-   This module only tracks the market reference price — TAMAYA's margin is
-   applied on top of it in js/products.js (getSellingPrice), never here, and
-   this reference number is only ever shown to customers labeled as "Harga
-   Acuan LM" (a market reference), never as TAMAYA's selling price. Tries
+   Single source of truth for the Logam Mulia REFERENCE (wholesale) price per
+   gram. This module only tracks that raw number — TAMAYA's margin is
+   applied on top of it in js/products.js (getSellingPrice).
+
+   IMPORTANT: the raw reference price from this module (state.pricePerGram /
+   getState()) must NEVER be rendered directly in the UI. TAMAYA GOLD is a
+   reseller; if the raw wholesale price were ever shown next to a marked-up
+   product price, a customer could just divide the two and read off the
+   exact margin. mountWidget() below and calculator.js both call through
+   TamayaProducts.getSellingPrice(1) instead, which already has the margin
+   baked in, and that's the only number that reaches the page. Tries
    official sources first, is honest with the UI about whether that
    succeeded (LIVE) or not (FALLBACK), and never pretends to be live when it
    isn't.
@@ -283,9 +289,9 @@
   }
 
   /**
-   * Demo/dummy historical series anchored to the reference (acuan) LM
-   * price. Clearly a placeholder until a real historical-price API/endpoint
-   * is wired in (see fetchHistory()).
+   * Demo/dummy historical series anchored to whatever endPrice the caller
+   * passes in. Clearly a placeholder until a real historical-price
+   * API/endpoint is wired in (see fetchHistory()).
    */
   function generateHistory(period, endPrice) {
     var cfg = PERIODS[period];
@@ -322,9 +328,16 @@
    * historical-price endpoint, which neither source exposes publicly today.
    * Swap this body for a real API call when one exists; keep the same
    * return shape (array of {t, price}) and callers need no changes.
+   *
+   * `endPriceOverride` lets a caller anchor the series to a different final
+   * value than the raw reference price — mountWidget() uses this so the
+   * customer-facing chart/headline always reflect TAMAYA's selling price
+   * (reference + margin), never the raw wholesale number, so the two can't
+   * be compared side by side to reverse the margin.
    */
-  function fetchHistory(period) {
-    return Promise.resolve(generateHistory(period, state.pricePerGram));
+  function fetchHistory(period, endPriceOverride) {
+    var endPrice = endPriceOverride != null ? endPriceOverride : state.pricePerGram;
+    return Promise.resolve(generateHistory(period, endPrice));
   }
 
   function formatIDR(value, decimals) {
@@ -566,6 +579,18 @@
     var activeTab = periodTabs ? periodTabs.querySelector(".active[data-period]") : null;
     var currentPeriod = activeTab ? activeTab.getAttribute("data-period") : "1H";
 
+    // TAMAYA's actual selling price for 1 gram (reference + margin) — the
+    // ONLY price this widget ever shows. Never the raw state.pricePerGram:
+    // showing that number anywhere next to a marked-up product price would
+    // let a customer divide the two and read off the exact margin. Falls
+    // back to the raw price only if products.js somehow isn't loaded.
+    function displayPricePerGram() {
+      if (global.TamayaProducts && typeof global.TamayaProducts.getSellingPrice === "function") {
+        return global.TamayaProducts.getSellingPrice(1);
+      }
+      return getState().pricePerGram;
+    }
+
     function formatTimestamp(snap) {
       if (snap.isLive && snap.updatedAtLabel) return snap.updatedAtLabel;
       if (snap.lastCheckedAt) {
@@ -583,7 +608,7 @@
 
     function render() {
       var snap = getState();
-      if (valueEl) valueEl.textContent = formatIDR(snap.pricePerGram);
+      if (valueEl) valueEl.textContent = formatIDR(displayPricePerGram());
       if (statusEl) {
         statusEl.classList.toggle("is-live", snap.isLive);
         statusEl.classList.toggle("is-fallback", !snap.isLive);
@@ -600,7 +625,7 @@
 
     function loadPeriod(period) {
       currentPeriod = period;
-      fetchHistory(period).then(function (points) {
+      fetchHistory(period, displayPricePerGram()).then(function (points) {
         if (chart) chart.setData(points);
         if (typeof options.onHistoryLoaded === "function") options.onHistoryLoaded(points);
       });
